@@ -9,7 +9,7 @@ metadata:
     public: true
     sensitive: false
   links:
-    - url: https://adgear.atlassian.net/wiki/spaces/ENG/pages/19112264034/MTL+-+API-DSP
+    - url: https://adgear.atlassian.net/l/cp/9kD8ZGRe
       title: confluence page
 spec:
   owner: cg-dsp-api
