@@ -1,0 +1,17 @@
+metadata:
+  name: sql_search_parser
+  description: Simple SQL search conditions parser (where clause) in Ruby based on RACC.
+  labels:
+    stack: Ruby
+    product: dsp
+    jira-project: SDSP
+    jira-board: 182
+    public: true
+    sensitive: false
+  links:
+    - url: https://adgear.atlassian.net/wiki/spaces/ENG/pages/19112264034/MTL+-+API-DSP
+      title: confluence page
+spec:
+  owner: cg-dsp-api
+  type: library
+  lifecycle: production
