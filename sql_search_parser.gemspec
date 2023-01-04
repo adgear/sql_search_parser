@@ -17,4 +17,5 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'rake'
   s.add_development_dependency 'rexical'
   s.add_development_dependency 'racc'
+  s.add_development_dependency 'rubocop', '~> 1.41.1'
 end
