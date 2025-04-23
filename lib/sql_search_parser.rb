@@ -1,19 +1,21 @@
 module SQLSearch
-
-  def self.parse input
+  def self.parse(input)
     SQLSearch::Parser.new.parse(input)
   end
 
-  def self.tokenize input
+  def self.tokenize(input)
     SQLSearch::Parser.new.tokenize(input)
   end
 
   module Conditions
-    class Base ;end
+    class Base; end
+
     class And < Base
       attr_reader :left, :right
-      def initialize options
-        @left = options[:left]; @right = options[:right]
+
+      def initialize(options)
+        @left = options[:left]
+        @right = options[:right]
       end
 
       def to_s
@@ -23,8 +25,10 @@ module SQLSearch
 
     class Or < Base
       attr_reader :left, :right
-      def initialize options
-        @left = options[:left]; @right = options[:right]
+
+      def initialize(options)
+        @left = options[:left]
+        @right = options[:right]
       end
 
       def to_s
@@ -34,7 +38,8 @@ module SQLSearch
 
     class Not < Base
       attr_reader :value
-      def initialize options
+
+      def initialize(options)
         @value = options[:value]
       end
 
@@ -48,7 +53,7 @@ module SQLSearch
     class Base
       attr_reader :left, :right, :operator
 
-      def initialize options
+      def initialize(options)
         @left = options[:left]
         @right = options[:right]
         @operator = options[:operator].to_s.upcase.to_sym
@@ -60,7 +65,7 @@ module SQLSearch
     end
 
     class In < Base
-      def initialize options
+      def initialize(options)
         super options
         @operator = :IN
       end
@@ -69,9 +74,11 @@ module SQLSearch
 
   module Atoms
     class Base; end
+
     class InValues < Base
       attr_reader :values
-      def initialize options
+
+      def initialize(options)
         @values = options[:values]
       end
 
@@ -82,7 +89,8 @@ module SQLSearch
 
     class Scalar < Base
       attr_reader :left, :right, :operation
-      def initialize options
+
+      def initialize(options)
         @left = options[:left]
         @right = options[:right]
         @operation = options[:operation]
@@ -95,7 +103,8 @@ module SQLSearch
 
     class UnaryScalar < Scalar
       attr_reader :value, :operation
-      def initialize options
+
+      def initialize(options)
         @value = options[:value]
         @operation = options[:operation]
       end
@@ -107,7 +116,8 @@ module SQLSearch
 
     class Literal < Base
       attr_reader :value, :type
-      def initialize options
+
+      def initialize(options)
         @value = options[:value]
         @type = options[:type]
       end
@@ -119,7 +129,7 @@ module SQLSearch
         when :boolean
           value == true ? 'TRUE' : 'FALSE'
         when :null
-          "NULL"
+          'NULL'
         else
           "#{value}"
         end
@@ -129,7 +139,7 @@ module SQLSearch
     class Column < Base
       attr_reader :name, :space
 
-      def initialize options
+      def initialize(options)
         @name = options[:name]
         @space = options[:space]
       end
@@ -145,4 +155,4 @@ module SQLSearch
   end
 end
 
-require 'sql_search/parser.racc.rb'
+require 'sql_search/parser.racc'
