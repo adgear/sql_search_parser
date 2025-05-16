@@ -39,7 +39,7 @@ jobs:
           cache-version: 1
 
       - name: rubocop
-        uses: reviewdog/action-rubocop@v2.3.0
+        uses: reviewdog/action-rubocop@fcb74ba274da10b18d038d0bcddaae3518739634
         with:
           rubocop_version: gemfile
           rubocop_extensions: rubocop-performance rubocop-rake rubocop-i18n
